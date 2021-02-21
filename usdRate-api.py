@@ -10,7 +10,7 @@ app = Flask(__name__)
 def home():
     return render_template("home.html")
 
-@app.route('/conversion', methods=['POST'])
+@app.route('/conversion', methods=['POST','GET'])
 def ExchangeRateUSD_byUI():
     currency_code = request.form['code']
     currency_code = currency_code.upper()
