@@ -4,13 +4,13 @@ import requests
 from bs4 import BeautifulSoup
 from flask import Flask, jsonify, request, render_template
 
-app = Flask(__name__)
+usdRate-api = Flask(__name__)
 
-@app.route('/')
+@usdRate-api.route('/')
 def home():
     return render_template("home.html")
 
-@app.route('/conversion', methods=['POST','GET'])
+@usdRate-api.route('/conversion', methods=['POST','GET'])
 def ExchangeRateUSD_byUI():
     currency_code = request.form['code']
     currency_code = currency_code.upper()
@@ -61,7 +61,7 @@ def ExchangeRateUSD_byUI():
     }
     return jsonify(result)
 # for passing vector throw codes
-@app.route('/conversions/<string:currency_code>')
+@usdRate-api.route('/conversions/<string:currency_code>')
 def ExchangeRateUSD_byUrl(currency_code):
     currency_code = currency_code.upper()
     codeV = {'CurrencyCode': currency_code.split(',')}
@@ -112,4 +112,4 @@ def ExchangeRateUSD_byUrl(currency_code):
     return jsonify(result)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    usdRate-api.run(debug=True)
