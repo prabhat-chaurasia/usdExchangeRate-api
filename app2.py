@@ -59,7 +59,7 @@ def ExchangeRateUSD_byUI():
         "Currency_code": currency_code.split(','),
         "Ex-rateUSD": res
     }
-    return jsonify(result)
+    return render_template('home.html', result=result)
 # for passing vector throw codes
 @app2.route('/conversions/<string:currency_code>')
 def ExchangeRateUSD_byUrl(currency_code):
